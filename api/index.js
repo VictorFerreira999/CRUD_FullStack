@@ -1,8 +1,15 @@
-import express from "express"
+import express from 'express';
+import userRoutes from './routes/users.js';
+import cors from 'cors';
 
-const app = express()
+const app = express();
 
-app.use(express.json())
-app.use(cors())
+app.use(express.json());
+app.use(cors());
 
-app.listen(8800)
+app.use('/', userRoutes);
+
+// Inicie o servidor HTTP
+app.listen(8800, () => {
+  console.log('Servidor HTTP rodando na porta 8800');
+});
